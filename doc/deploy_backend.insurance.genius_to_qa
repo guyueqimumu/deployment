@@ -1,0 +1,31 @@
+#!/usr/bin/env php
+<?php
+include '/opt/deploy/.deploy/Core/Repository.php';
+$config = [
+    'distPath' => '/data/wwwroot/backend.insurance.genius', //发布目录
+    'version'=> '',
+    'repo' => 'ssh://admin@repo.janfish.cn:29418/backend.insurance.genius.git', //仓库地址
+    'reloadSupervisor' => [], //是否需要重启supervisord服务
+    'excludeSyncFiles' => [], //不需要被同步到发布目录的文件
+    'clean' => [
+        
+    ],
+    'makeDir'=>[
+        
+    ],
+    'chmod'=>[ //修改文件或者文件夹的权限的配置
+        'logs'=>'777','cli/run'=>'777','api/public/files'=>'777','core/vendor/aip-php-sdk/Runtime'=>'777',
+    ],
+    'configFiles' => [ //执行动态配置的模版和目标文件
+        'configs/config.template.php'=>'configs/dev.php',
+    ],
+    'variables' => [//执行动态配置的变量 通过 @@VARIABLE_NAME@@格式在配置模版中使用
+        'BASE_URL'=>'api.dev.insurance.xy.cn','PINGAN_API'=>'http://api.pingan.xy.cn','PICC_API'=>'http://api.picc.xy.cn','JINTAI_API'=>'http://api.jintai.xy.cn/jintai','DB_NAME'=>'car_insurance_genius_v2','COMPANYKEY'=>'1bbd58b46c2fd564190de4099d4af141','HOST'=>'open.tax.xy.cn','APP_KEY'=>'78f9b4fad3481fbce1df0b30eee58577','DES_3KEY'=>'123456788765432112345678','SIGN_TYPE'=>'sha256','DEALER_ID'=>'1','ANTS_CHAT_API_HOST'=>'http://open.ants.xy.cn/','ANTS_CHAT_DEALER_ID'=>'1','ANTS_CHAT_APP_KEY'=>'78f9b4fad3481fbce1df0b30eee58579','ANTS_CHAT_DES3_KEY'=>'123456788765432112345348','INSURANCE_MIDDLEWARE_QUEUE'=>'insurance-middleware','ANTS_DB_NAME'=>'ants','PingAn_RISK_RULE'=>'10','JinTai_RISK_RULE'=>'30','ALL_TRUST_RISK_RULE'=>'10','ANTS_CHAT_RONGBAOJIE_UUID'=>'1','STORAGE_TAG'=>'insurance.market','STORAGE_APP_ID'=>'market','STORAGE_APP_SECRET'=>'(GqoC*zYlD5C2Tt2tqgI','HOST_V2'=>'http://open-tax.hui-yida.xy.cn/','FINANCE_CENTER_ID'=>'72928888','FINANCE_CENTER_SECRET'=>'3a315454687e73245e0e7f4b611531d1c651338b','PLATFORM_SERVICE_URL'=>'http://api.dev.platform.insurance.xy.cn/','HOST_V2_APPLY_CANCEL_TIME'=>'7200','CHINATP_API'=>'http://api.china.tp.xy.cn/chinaTp/','CHAMPION_API'=>'http://api.chengtai.xy.cn/chengtai/','EDHIC_API'=>'http://api.edhic.xy.cn/','CALL_CENTER_SERVICE_HOST'=>'tcp://insurance-service:9501/','PASSPORT_SERVICE_HOST'=>'tcp://insurance-service:9502/','RESOURCE_SERVICE_HOST'=>'tcp://insurance-service:9503/','COMPANY_SERVICE_HOST'=>'tcp://insurance-service:9504/','FINANCE_CENTER_HOST'=>'tcp://insurance-service:9505/','POLICY_ORDER_HOST'=>'tcp://insurance-service:9506/','PROMISE_SERVICE_HOST'=>'tcp://insurance-service:9507/','ORDER_CENTER_HOST'=>'tcp://insurance-service:9508/','COMMON_SERVICE_HOST'=>'tcp://insurance-service:9509/','FINANCE_CENTER_ID'=>'72928888','FINANCE_CENTER_SECRET'=>'3a315454687e73245e0e7f4b611531d1c651338b','LIBERTY_API'=>'http://api.liberty.insurance.xy.cn/','APPC_API'=>'http://api.appc.insurance.xy.cn/','MARKET_STATUS'=>'1','MARKET_URL'=>'http://xxxxx','CALLER_TUBE'=>'prod_caller_tobe_hl','CALLER_WORKER_NUM'=>'2','CALLER_DAEMONIZE'=>'false','CPCI_API'=>'http://api.cpci.xy.cn',
+    ]
+];
+$branch = 'master';
+if (!empty($argv[1])) {
+    $branch = $argv[1];
+}
+$repo = new \Service\Core\Repository($config);
+$repo->deploy($branch);
