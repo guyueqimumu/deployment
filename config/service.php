@@ -6,10 +6,10 @@
  * Time: 11:45
  */
 
-use Core\Container\Injection;
+use Core\Frame\Container\Injection;
 $di = new Injection();
 $di->set('db',function (){
-    return new \Core\db\Adaptee\Pdo([]);
+    return new \Core\Frame\db\Adaptee\Pdo([]);
 });
 
 return $di;

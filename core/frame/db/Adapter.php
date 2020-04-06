@@ -6,8 +6,8 @@
  * Time: 18:02
  */
 
-namespace Core\db;
-use Core\db\Adaptee;
+namespace Core\Frame\db;
+
 
 /**
  * @property TargetInterface $obj
@@ -22,7 +22,7 @@ class Adapter implements TargetInterface
     public function __construct($config=[])
     {
         $adapter = $config['Adapter'];
-        $class="Core\\db\\Adaptee\\".$adapter;
+        $class="Core\\Frame\\db\\Adaptee\\".$adapter;
         $this->obj = new $class($config);
     }
 

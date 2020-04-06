@@ -1,5 +1,5 @@
 <?php
-namespace  Core\Http;
+namespace  Core\Frame\Http;
 /**
  * Created by QiLin.
  * User: NO.01

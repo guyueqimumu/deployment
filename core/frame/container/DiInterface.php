@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Container;
+namespace Core\Frame\Container;
 /**
  * Created by QiLin.
  * User: NO.01

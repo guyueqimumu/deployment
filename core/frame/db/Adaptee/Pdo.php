@@ -1,8 +1,8 @@
 <?php
 
-namespace Core\db\Adaptee;
+namespace Core\Frame\db\Adaptee;
 
-use Core\db\TargetInterface;
+use Core\Frame\db\TargetInterface;
 
 /**
  * @property \PDO $db

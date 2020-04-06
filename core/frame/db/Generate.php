@@ -6,7 +6,7 @@
  * Time: 10:14
  */
 
-namespace Core\db;
+namespace Core\Frame\db;
 
 /**
  * @property TargetInterface $db

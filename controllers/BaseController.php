@@ -2,12 +2,12 @@
 
 namespace Controllers;
 
-use Core\Container\DiInterface;
-use Core\Container\Injection;
+use Core\Frame\Container\DiInterface;
+use Core\Frame\Container\Injection;
 
 /**
- * @property \Core\Container\Injection $di
- * @property \Core\db\TargetInterface $db
+ * @property \Core\Frame\Container\Injection $di
+ * @property \Core\Frame\db\TargetInterface $db
  * Created by QiLin.
  * User: NO.01
  * Date: 2020/4/1

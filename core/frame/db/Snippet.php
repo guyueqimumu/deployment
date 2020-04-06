@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\db;
+namespace Core\Frame\db;
 /**
  * Created by QiLin.
  * User: NO.01
